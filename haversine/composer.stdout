@@ -4,32 +4,32 @@ Threads: 1
 Log Level none
 Mode: composer
 <Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
-total time: 21.71435284614563, ave_data_gen: 9.403456687927246, ave_runtime: 9.335752725601196, len: 4294967296, worker_num: 16
+total time: 21.72750997543335, ave_data_gen: 9.423444032669067, ave_runtime: 9.333227157592773, len: 4294967296, worker_num: 16
 Size: 268435456
 Piece Size: 16384
 Threads: 2
 Log Level none
 Mode: composer
 <Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
-total time: 29.11915159225464, ave_data_gen: 5.4136457443237305, ave_runtime: 2.9502220153808594, len: 4294967296, worker_num: 16
+total time: 29.140906810760498, ave_data_gen: 5.419991970062256, ave_runtime: 2.953040599822998, len: 4294967296, worker_num: 16
 Size: 268435456
 Piece Size: 16384
 Threads: 4
 Log Level none
 Mode: composer
 <Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
-total time: 15.733938217163086, ave_data_gen: 9.422715663909912, ave_runtime: 3.1512744426727295, len: 4294967296, worker_num: 16
+total time: 15.614226341247559, ave_data_gen: 9.433003187179565, ave_runtime: 3.0675079822540283, len: 4294967296, worker_num: 16
 Size: 268435456
 Piece Size: 16384
 Threads: 8
 Log Level none
 Mode: composer
 <Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
-total time: 27.149015426635742, ave_data_gen: 5.430930852890015, ave_runtime: 0.9536128044128418, len: 4294967296, worker_num: 16
+total time: 27.158865213394165, ave_data_gen: 5.4362523555755615, ave_runtime: 0.9538724422454834, len: 4294967296, worker_num: 16
 Size: 268435456
 Piece Size: 16384
 Threads: 16
 Log Level none
 Mode: composer
 <Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
-total time: 14.832218885421753, ave_data_gen: 9.393804788589478, ave_runtime: 2.3137409687042236, len: 4294967296, worker_num: 16
+total time: 15.114683628082275, ave_data_gen: 9.450011730194092, ave_runtime: 2.522745132446289, len: 4294967296, worker_num: 16

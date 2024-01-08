@@ -1,0 +1,70 @@
+File: /mnt/nfs/birth_analysis/_data/babynames-xlarge.txt
+Threads: 1
+<Client: 'tcp://192.168.1.102:8786' processes=1 threads=20, memory=31.05 GiB>
+========================================================
+Size of names: 143367201
+Top1000 length: 2451832
+Local Reduction: 0.2612123489379883
+Apply: 12.35646390914917
+Elemts in top1000: 268000
+Analysis: 0.010153770446777344
+SA total time: 12.366649866104126
+Top1000 birth sum: 6522024482
+Dask Time: 30.388104677200317
+========================================================
+File: /mnt/nfs/birth_analysis/_data/babynames-xlarge.txt
+Threads: 2
+<Client: 'tcp://192.168.1.102:8786' processes=1 threads=20, memory=31.05 GiB>
+========================================================
+Size of names: 143367201
+Top1000 length: 2451238
+Local Reduction: 0.2847750186920166
+Apply: 7.795649528503418
+Elemts in top1000: 268000
+Analysis: 0.010315179824829102
+SA total time: 7.806087493896484
+Top1000 birth sum: 6522024482
+Dask Time: 24.89751362800598
+========================================================
+File: /mnt/nfs/birth_analysis/_data/babynames-xlarge.txt
+Threads: 4
+<Client: 'tcp://192.168.1.102:8786' processes=1 threads=20, memory=31.05 GiB>
+========================================================
+Size of names: 143367201
+Top1000 length: 2452459
+Local Reduction: 0.2762293815612793
+Apply: 5.093895673751831
+Elemts in top1000: 268000
+Analysis: 0.010373830795288086
+SA total time: 5.104302644729614
+Top1000 birth sum: 6522024482
+Dask Time: 22.673896312713623
+========================================================
+File: /mnt/nfs/birth_analysis/_data/babynames-xlarge.txt
+Threads: 8
+<Client: 'tcp://192.168.1.102:8786' processes=1 threads=20, memory=31.05 GiB>
+========================================================
+Size of names: 143367201
+Top1000 length: 2454516
+Local Reduction: 0.2762489318847656
+Apply: 4.19310450553894
+Elemts in top1000: 268000
+Analysis: 0.010046243667602539
+SA total time: 4.203186273574829
+Top1000 birth sum: 6522024482
+Dask Time: 21.739073038101196
+========================================================
+File: /mnt/nfs/birth_analysis/_data/babynames-xlarge.txt
+Threads: 16
+<Client: 'tcp://192.168.1.102:8786' processes=1 threads=20, memory=31.05 GiB>
+========================================================
+Size of names: 143367201
+Top1000 length: 2454538
+Local Reduction: 0.2818877696990967
+Apply: 5.584790468215942
+Elemts in top1000: 268000
+Analysis: 0.015520572662353516
+SA total time: 5.60034704208374
+Top1000 birth sum: 6522024482
+Dask Time: 23.639976263046265
+========================================================
