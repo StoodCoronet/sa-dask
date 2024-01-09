@@ -107,35 +107,67 @@ if __name__ == "__main__":
     client = Client('tcp://192.168.1.102:8786')
     print(client)
     
-    dask_size = 32 - args.size
+    dask_size = 28 - args.size
     dask_size = (1 << dask_size)
     
     composer_list = [composer] * dask_size
     size_list = [size] * dask_size
     threads_list = [threads] * dask_size
     # worker_list = ['tcp://192.168.1.102:21000', 'tcp://192.168.1.104:20000',]
-    # worker_list = ['w1', 'w2',]
+    worker_list = ['w1', 'w2',]
     # print(client.run(lambda: get_worker().name))
 
     start = time.time()
     future = client.map(run, composer_list, size_list,threads_list)
+    
+    time.sleep(10)
+    
     results = client.gather(future)
+    
+    print('\n::: start user output :::')
+    print(client)
+    print('::: end user output :::\n')
     
     
     # futures = []
-    # for i in range(dask_size):
-    #     composer_scattered = client.scatter(composer_list[i])
-    #     size_scattered = client.scatter(size_list[i])
-    #     threads_scattered = client.scatter(threads_list[i])
-    #     print(worker_list[i % 2])
-    #     if i % 2 == 0:
-    #         w = 'w1'
-    #     else:
-    #         w = 'w2'
+    # for i in range(int(dask_size / 2)):
+    #     # composer_scattered = client.scatter(composer_list[i])
+    #     # size_scattered = client.scatter(size_list[i])
+    #     # threads_scattered = client.scatter(threads_list[i])
+    #     # if i >= dask_size / 2:
+    #     #     w = 'w1'
+    #     #     print('w1')
+    #     #     future = client.submit(run, composer_list[i], size_list[i], threads_list[i], workers='w1') #, workers=[worker_list[i % 2]]
+    #     # else:
+    #     #     w = 'w2'
+    #     #     print('w2')
+    #     #     future = client.submit(run, composer_list[i], size_list[i], threads_list[i], workers='w2') #, workers=[worker_list[i % 2]]
     #     # futrue = client.submit(run, composer_scattered, size_scattered, threads_scattered, i, workers=w) #, workers=[worker_list[i % 2]]
-    #     futrue = client.submit(run, composer_list[i], size_list[i], threads_list[i], workers=[worker_list[i % 2]]) #, workers=[worker_list[i % 2]]
-    #     futures.append(futrue)
-    # results = [future.result() for future in futures]
+    #     future = client.submit(run, composer_list[i], size_list[i], threads_list[i], workers='w1') #, workers=[worker_list[i % 2]]
+    #     futures.append(future)
+    #     result = future.result()
+    #     out, runtime, data_gen_time, worker_id = result
+    #     print(f"worker id: {worker_id}, data gen: {data_gen_time}, runtime: {runtime}")
+    # results1 = [future.result() for future in futures]
+    
+    # futures = []
+    # for i in range(int(dask_size / 2)):
+    #     # composer_scattered = client.scatter(composer_list[i])
+    #     # size_scattered = client.scatter(size_list[i])
+    #     # threads_scattered = client.scatter(threads_list[i])
+    #     # if i >= dask_size / 2:
+    #     #     w = 'w1'
+    #     # else:
+    #     #     w = 'w2'
+    #     w = 'w2'
+    #     # future = client.submit(run, composer_scattered, size_scattered, threads_scattered, workers='w2') #, workers=[worker_list[i % 2]]
+    #     futrue = client.submit(run, composer_list[i], size_list[i], threads_list[i], workers='w2') #, workers=[worker_list[i % 2]]
+    #     futures.append(future)
+    #     result = future.result()
+    #     out, runtime, data_gen_time, worker_id = result
+    #     print(f"worker id: {worker_id}, data gen: {data_gen_time}, runtime: {runtime}")
+    # results2 = [future.result() for future in futures]
+    
     
     end = time.time()
     exe_time = end - start
@@ -151,7 +183,21 @@ if __name__ == "__main__":
         worker_num += 1
         total_data_gen_time += data_gen_time
         total_runtime += runtime
-        # print(f"worker id: {worker_id}, data gen: {data_gen_time}, runtime: {runtime}, {i}/{len(results)}")
+        print(f"worker id: {worker_id}, data gen: {data_gen_time}, runtime: {runtime}, {i}/{len(results)}")
+    # for i, result in enumerate(results1):
+    #     out, runtime, data_gen_time, worker_id = result
+    #     length += len(out)
+    #     worker_num += 1
+    #     total_data_gen_time += data_gen_time
+    #     total_runtime += runtime
+    #     print(f"worker id: {worker_id}, data gen: {data_gen_time}, runtime: {runtime}, {i}/{len(results1)}")
+    # for i, result in enumerate(results2):
+    #     out, runtime, data_gen_time, worker_id = result
+    #     length += len(out)
+    #     worker_num += 1
+    #     total_data_gen_time += data_gen_time
+    #     total_runtime += runtime
+    #     print(f"worker id: {worker_id}, data gen: {data_gen_time}, runtime: {runtime}, {i}/{len(results2)}")
     
     print(f"total time: {exe_time}, ave_data_gen: {total_data_gen_time/worker_num}, ave_runtime: {total_runtime/worker_num}, len: {length}, worker_num: {worker_num}")
 
