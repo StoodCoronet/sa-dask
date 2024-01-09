@@ -143,7 +143,7 @@ def main():
     print(client)
 
     start = time.time()
-    future = client.submit(run, filename, threads, composer)
+    future = client.submit(run, filename, threads, composer, workers=['w2'])
     size_of_names, top1000_len, local_reduction, apply_time, elememts_num_in_top1000, analyze_time, total_time, top1000_birth_sum = future.result()
     
     end = time.time()

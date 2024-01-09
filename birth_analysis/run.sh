@@ -19,7 +19,7 @@ for task in "${tasks[@]}"; do
 done
 
 for i in {1..$runs}; do
-  python birth_analysis_dask_naive.py -f $filename -m naive >> naive.stdout 2>> naive.stderr
+  # python birth_analysis_dask_naive.py -f $filename -m naive >> naive.stdout 2>> naive.stderr
   for nthreads in "${threads[@]}"; do 
     python birth_analysis_dask.py -f $filename -t $nthreads -m composer >> composer.stdout 2>> composer.stderr
   done
