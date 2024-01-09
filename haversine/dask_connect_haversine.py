@@ -10,6 +10,7 @@ dask-worker tcp://192.168.1.102:8786 --no-nanny --worker-port 20000
 """
 
 from dask.distributed import Client, get_worker
+from dask_jobqueue import SLURMCluster, PBSCluster
 import time
 import argparse
 import math
@@ -103,8 +104,8 @@ if __name__ == "__main__":
         composer = False
     else:
         raise ValueError("unknown mode", mode)
-
-    client = Client('tcp://192.168.1.102:8786')
+    
+    client = Client(address='tcp://192.168.1.102:8786')
     print(client)
     
     dask_size = 28 - args.size
@@ -116,12 +117,9 @@ if __name__ == "__main__":
     # worker_list = ['tcp://192.168.1.102:21000', 'tcp://192.168.1.104:20000',]
     worker_list = ['w1', 'w2',]
     # print(client.run(lambda: get_worker().name))
-
+    
     start = time.time()
     future = client.map(run, composer_list, size_list,threads_list)
-    
-    time.sleep(10)
-    
     results = client.gather(future)
     
     print('\n::: start user output :::')
