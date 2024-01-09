@@ -20,3 +20,4 @@ done
 python dask_connect_haversine.py -m naive -s $size >> naive.stdout 2>> naive.stderr
 
 # python dask_connect_haversine.py -m composer -s 20
+# python dask_connect_haversine.py -m composer -t 4 -s 26

@@ -1,36 +1,35 @@
-Size: 67108864
+Size: 268435456
 Piece Size: 16384
 Threads: 1
 Log Level none
 Mode: composer
 <Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
-[4839.95983063 4839.95983063 4839.95983063 ... 4839.95983063 4839.95983063
- 4839.95983063]
-exe_time: 22.394275426864624, t: 1.2987942695617676
-Size: 67108864
+total time: 21.72750997543335, ave_data_gen: 9.423444032669067, ave_runtime: 9.333227157592773, len: 4294967296, worker_num: 16
+Size: 268435456
+Piece Size: 16384
+Threads: 2
+Log Level none
+Mode: composer
+<Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
+total time: 29.140906810760498, ave_data_gen: 5.419991970062256, ave_runtime: 2.953040599822998, len: 4294967296, worker_num: 16
+Size: 268435456
 Piece Size: 16384
 Threads: 4
 Log Level none
 Mode: composer
 <Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
-[4839.95983063 4839.95983063 4839.95983063 ... 4839.95983063 4839.95983063
- 4839.95983063]
-exe_time: 10.066697835922241, t: 0.9339194297790527
-Size: 67108864
+total time: 15.614226341247559, ave_data_gen: 9.433003187179565, ave_runtime: 3.0675079822540283, len: 4294967296, worker_num: 16
+Size: 268435456
 Piece Size: 16384
 Threads: 8
 Log Level none
 Mode: composer
 <Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
-[4839.95983063 4839.95983063 4839.95983063 ... 4839.95983063 4839.95983063
- 4839.95983063]
-exe_time: 21.48545527458191, t: 0.4078826904296875
-Size: 67108864
+total time: 27.158865213394165, ave_data_gen: 5.4362523555755615, ave_runtime: 0.9538724422454834, len: 4294967296, worker_num: 16
+Size: 268435456
 Piece Size: 16384
 Threads: 16
 Log Level none
 Mode: composer
 <Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
-[4839.95983063 4839.95983063 4839.95983063 ... 4839.95983063 4839.95983063
- 4839.95983063]
-exe_time: 10.044299364089966, t: 0.9460208415985107
+total time: 15.114683628082275, ave_data_gen: 9.450011730194092, ave_runtime: 2.522745132446289, len: 4294967296, worker_num: 16
