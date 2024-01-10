@@ -115,7 +115,7 @@ if __name__ == "__main__":
     size_list = [size] * dask_size
     threads_list = [threads] * dask_size
     # worker_list = ['tcp://192.168.1.102:21000', 'tcp://192.168.1.104:20000',]
-    worker_list = ['w1', 'w2',]
+    # worker_list = ['w1', 'w2',]
     # print(client.run(lambda: get_worker().name))
     
     start = time.time()
