@@ -1,0 +1,10 @@
+Size: 67108864
+Piece Size: 32768
+Threads: 16
+Log Level none
+Mode: naive
+Generating data...done.
+<Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
+Average Data Gen:     1.5923182964324951
+Average Compute Time: 11.040165185928345
+Total time:           12.728088855743408
