@@ -43,8 +43,9 @@ def run(threads):
     print(f"========================================={os.getcwd()}")
     # print(sys.path)
     # total_time = plac.call(main, threads)
+    s = time.time()
     total_time = main(threads)
-    return total_time
+    return time.time() - s
 
 # @plac.annotations(
 #     n_jobs=("Number of workers", "option", "n", int),
@@ -69,7 +70,7 @@ def main(n_jobs=4):
     end = time.time()
     print("Total:", end - start)
     total_time = end - start
-    return total_time, texts
+    return total_time #, texts
     
 
 class TextBatchSplit(SplitType):
@@ -143,7 +144,7 @@ if __name__ == "__main__":
 
     from pycomposer import *
     
-    future1 = client.submit(run, threads)
+    future1 = client.submit(run, threads, workers='w1')
     # future2 = client.submit(run, threads)
     result1 = future1.result()
     # result2 = future2.result()

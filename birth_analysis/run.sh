@@ -24,3 +24,4 @@ for i in {1..$runs}; do
     python birth_analysis_dask.py -f $filename -t $nthreads -m composer >> composer.stdout 2>> composer.stderr
   done
 done
+# python birth_analysis_dask.py -f /mnt/nfs/birth_analysis/_data/babynames-xlarge.txt -m naive >> naive.stdout 2>> naive.stderr

@@ -1,35 +1,60 @@
-Size: 268435456
+Size: 67108864
 Piece Size: 16384
 Threads: 1
 Log Level none
 Mode: composer
 <Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
-total time: 21.72750997543335, ave_data_gen: 9.423444032669067, ave_runtime: 9.333227157592773, len: 4294967296, worker_num: 16
-Size: 268435456
+
+::: start user output :::
+<Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
+::: end user output :::
+
+total time: 189.70543932914734, ave_data_gen: 1.1760932132601738, ave_runtime: 1.7906373292207718, len: 2147483648, worker_num: 32
+Size: 67108864
 Piece Size: 16384
 Threads: 2
 Log Level none
 Mode: composer
 <Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
-total time: 29.140906810760498, ave_data_gen: 5.419991970062256, ave_runtime: 2.953040599822998, len: 4294967296, worker_num: 16
-Size: 268435456
+
+::: start user output :::
+<Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
+::: end user output :::
+
+total time: 170.36913132667542, ave_data_gen: 1.1762119978666306, ave_runtime: 1.1447254866361618, len: 2147483648, worker_num: 32
+Size: 67108864
 Piece Size: 16384
 Threads: 4
 Log Level none
 Mode: composer
 <Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
-total time: 15.614226341247559, ave_data_gen: 9.433003187179565, ave_runtime: 3.0675079822540283, len: 4294967296, worker_num: 16
-Size: 268435456
+
+::: start user output :::
+<Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
+::: end user output :::
+
+total time: 152.97874474525452, ave_data_gen: 1.176826186478138, ave_runtime: 0.6072828844189644, len: 2147483648, worker_num: 32
+Size: 67108864
 Piece Size: 16384
 Threads: 8
 Log Level none
 Mode: composer
 <Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
-total time: 27.158865213394165, ave_data_gen: 5.4362523555755615, ave_runtime: 0.9538724422454834, len: 4294967296, worker_num: 16
-Size: 268435456
+
+::: start user output :::
+<Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
+::: end user output :::
+
+total time: 149.68849730491638, ave_data_gen: 1.1786030977964401, ave_runtime: 0.48902256041765213, len: 2147483648, worker_num: 32
+Size: 67108864
 Piece Size: 16384
 Threads: 16
 Log Level none
 Mode: composer
 <Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
-total time: 15.114683628082275, ave_data_gen: 9.450011730194092, ave_runtime: 2.522745132446289, len: 4294967296, worker_num: 16
+
+::: start user output :::
+<Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
+::: end user output :::
+
+total time: 150.37841749191284, ave_data_gen: 1.1772202774882317, ave_runtime: 0.5071253478527069, len: 2147483648, worker_num: 32
