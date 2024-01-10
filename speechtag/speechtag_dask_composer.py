@@ -41,11 +41,14 @@ from pycomposer import *
 
 def run(threads):
     print(f"========================================={os.getcwd()}")
-    main(threads)
+    # print(sys.path)
+    # total_time = plac.call(main, threads)
+    total_time = main(threads)
+    return total_time
 
-@plac.annotations(
-    n_jobs=("Number of workers", "option", "n", int),
-)
+# @plac.annotations(
+#     n_jobs=("Number of workers", "option", "n", int),
+# )
 def main(n_jobs=4):
     #def main(model="en_core_web_sm", n_jobs=4, batch_size=1000, limit=10000):
     model="en_core_web_sm"
@@ -66,7 +69,7 @@ def main(n_jobs=4):
     end = time.time()
     print("Total:", end - start)
     total_time = end - start
-    return total_time
+    return total_time, texts
     
 
 class TextBatchSplit(SplitType):
@@ -123,6 +126,7 @@ if __name__ == "__main__":
     threads = args.threads
     loglevel = args.verbosity
     
+    
     client = Client(address='tcp://192.168.1.102:8786')
     print(client)
 
@@ -130,9 +134,22 @@ if __name__ == "__main__":
     batch_size = 1000
     limit = 10000
     
-    future = client.submit(run, threads)
-    result = future.result()
-    print(result)
+    start = time.time()
+    
+    sys.path.append("/home/robye/workspace/sa/split-annotations/python/lib")
+    sys.path.append("/home/robye/workspace/sa/split-annotations/python/pycomposer/")
+    sys.path.append("/home/sakaban/split-annotations/python/lib")
+    sys.path.append("/home/sakaban/split-annotations/python/pycomposer/")
+
+    from pycomposer import *
+    
+    future1 = client.submit(run, threads)
+    # future2 = client.submit(run, threads)
+    result1 = future1.result()
+    # result2 = future2.result()
+    print(result1)
+    # print(result2)
+    print(f"total time: {time.time() - start}")
     
     # main(model="en_core_web_sm", n_jobs=threads, batch_size=1000, limit=10000)
     # main(n_jobs=threads)
