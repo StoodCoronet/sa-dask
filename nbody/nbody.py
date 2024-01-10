@@ -290,6 +290,7 @@ if __name__ == "__main__":
     
     client = Client(address='tcp://192.168.1.102:8786')
     print(client)
+    client.restart()
     
     sys.path.append("/home/robye/workspace/sa/split-annotations/python/lib")
     sys.path.append("/home/robye/workspace/sa/split-annotations/python/pycomposer")
@@ -316,7 +317,7 @@ if __name__ == "__main__":
     sys.stdout.write("Generating data...")
     sys.stdout.flush()
     
-    dask_size = (1 << 3)
+    dask_size = (1 << 4)
     size_list = [size] * dask_size
     composer_list = [composer] * dask_size
     threads_list = [threads] * dask_size
@@ -325,8 +326,13 @@ if __name__ == "__main__":
     # results = future.result()
     # m, x, y, z, vx, vy, vz = results 
     
-    future = client.map(random_galaxy, size_list, composer_list,threads_list, workers='w2')
-    results = client.gather(future)
+    # future = client.map(random_galaxy, size_list, composer_list,threads_list, workers='w2')
+    # results = client.gather(future)
+    
+    results = []
+    for i in range(0, dask_size, 2):
+        future = client.map(random_galaxy, size_list[i:i+1], composer_list[i:i+1], threads_list[i:i+1])
+        results += client.gather(future)
     
     m_list = []
     x_list = []
@@ -357,8 +363,19 @@ if __name__ == "__main__":
     simulation_time, step_0, step_05, step_1, step_2, step_3, step_4 = result
     
     iterations_list = [iterations] * len(x)
-    future = client.map(simulate, m_list, x_list, y_list, z_list, vx_list, vy_list, vz_list, iterations_list, workers='w2')
-    results = client.gather(future)
+    
+    # future = client.map(simulate, m_list, x_list, y_list, z_list, vx_list, vy_list, vz_list, iterations_list, workers='w2')
+    # results = client.gather(future)
+    
+    results = []
+    for i in range(0, len(x), 2):
+        future = client.map(simulate, m_list[i:i+1], x_list[i:i+1], y_list[i:i+1], z_list[i:i+1], vx_list[i:i+1], vy_list[i:i+1], vz_list[i:i+1], iterations_list[i:i+1])
+        results += client.gather(future)
+    
+    end = time.time()
+        
+    exe_time = end - start
+    
     simulation_time_list = []
     step_0_list = []
     step_05_list = []
@@ -369,15 +386,14 @@ if __name__ == "__main__":
     for result in results:
         simulation_time, step_0, step_05, step_1, step_2, step_3, step_4 = result
         simulation_time_list.append(simulation_time)
-        step_0_list.append(simulation_time)
-        step_05_list.append(simulation_time)
-        step_1_list.append(simulation_time)
-        step_2_list.append(simulation_time)
-        step_3_list.append(simulation_time)
-        step_4_list.append(simulation_time)
+        step_0_list.append(step_0)
+        step_05_list.append(step_05)
+        step_1_list.append(step_1)
+        step_2_list.append(step_2)
+        step_3_list.append(step_3)
+        step_4_list.append(step_4)
     
-    end = time.time()
-    exe_time = end - start
+
 
     # print(f"Simulation time: {simulation_time}")
     # print(f"step 0:          {step_0}")
@@ -395,3 +411,5 @@ if __name__ == "__main__":
     print(f"Total time:      {exe_time}")
 
     client.close()
+    
+    time.sleep(5)

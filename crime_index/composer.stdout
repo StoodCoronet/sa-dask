@@ -1,0 +1,12 @@
+Size: 67108864
+Piece Size: 32768
+Threads: 1
+Mode: composer
+Generating data...done.
+<Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
+Size: 67108864
+Piece Size: 32768
+Threads: 2
+Mode: composer
+Generating data...done.
+<Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>

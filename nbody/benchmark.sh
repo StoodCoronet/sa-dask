@@ -51,3 +51,4 @@ done
 # python nbody.py -m naive -s 14 -i 5 >> naive.stdout 2>> naive.stderr
 # TODO naive version of nbody
 
+# python nbody.py -m composer -s 14 -i 2 -t 8

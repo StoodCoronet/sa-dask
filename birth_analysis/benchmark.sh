@@ -24,3 +24,4 @@ for i in {1..$runs}; do
     python birth_analysis_composer.py -f $filename -t $nthreads >> composer.stdout 2>> composer.stderr
   done
 done
+# 

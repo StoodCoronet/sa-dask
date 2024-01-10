@@ -1,0 +1,70 @@
+Size: 16384
+Batch Size: 16384
+Threads: 1
+Log Level none
+Mode: composer
+<Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
+Generating data...done
+Simulation time: 7.497870922088623
+step 0:          1.0913496017456055
+step 0.5:        2.6464462280273438e-05
+step 1:          2.667510747909546
+step 2:          0.0008287429809570312
+step 3:          0.0036690235137939453
+Total time:      24.487534761428833
+Size: 16384
+Batch Size: 16384
+Threads: 2
+Log Level none
+Mode: composer
+<Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
+Generating data...done
+Simulation time: 14.045617818832397
+step 0:          2.221482753753662
+step 0.5:        9.965896606445312e-05
+step 1:          4.346536874771118
+step 2:          0.0012443065643310547
+step 3:          0.28025364875793457
+Total time:      36.455981969833374
+Size: 16384
+Batch Size: 16384
+Threads: 4
+Log Level none
+Mode: composer
+<Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
+Generating data...done
+Simulation time: 4.955237865447998
+step 0:          0.7460165023803711
+step 0.5:        8.58306884765625e-05
+step 1:          1.451413869857788
+step 2:          0.0012764930725097656
+step 3:          0.1329662799835205
+Total time:      21.70832347869873
+Size: 16384
+Batch Size: 16384
+Threads: 8
+Log Level none
+Mode: composer
+<Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
+Generating data...done
+Simulation time: 7.558902978897095
+step 0:          1.1705398559570312
+step 0.5:        0.0001475811004638672
+step 1:          2.2044906616210938
+step 2:          0.0012445449829101562
+step 3:          0.30478835105895996
+Total time:      30.79364585876465
+Size: 16384
+Batch Size: 16384
+Threads: 16
+Log Level none
+Mode: composer
+<Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
+Generating data...done
+Simulation time: 6.208187103271484
+step 0:          0.8714537620544434
+step 0.5:        5.078315734863281e-05
+step 1:          2.0991642475128174
+step 2:          0.0009057521820068359
+step 3:          0.27008557319641113
+Total time:      25.33167576789856

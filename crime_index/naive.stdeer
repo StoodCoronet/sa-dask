@@ -1,0 +1,36 @@
+Traceback (most recent call last):
+  File "crime_index_dask.py", line 154, in <module>
+    run()
+  File "crime_index_dask.py", line 134, in run
+    results = client.gather(futures)
+  File "/home/sakaban/anaconda3/envs/dasksa/lib/python3.7/site-packages/distributed/client.py", line 2152, in gather
+    asynchronous=asynchronous,
+  File "/home/sakaban/anaconda3/envs/dasksa/lib/python3.7/site-packages/distributed/utils.py", line 310, in sync
+    self.loop, func, *args, callback_timeout=callback_timeout, **kwargs
+  File "/home/sakaban/anaconda3/envs/dasksa/lib/python3.7/site-packages/distributed/utils.py", line 372, in sync
+    wait(10)
+  File "/home/sakaban/anaconda3/envs/dasksa/lib/python3.7/site-packages/distributed/utils.py", line 361, in wait
+    return e.wait(timeout)
+  File "/home/sakaban/anaconda3/envs/dasksa/lib/python3.7/threading.py", line 552, in wait
+    signaled = self._cond.wait(timeout)
+  File "/home/sakaban/anaconda3/envs/dasksa/lib/python3.7/threading.py", line 300, in wait
+    gotit = waiter.acquire(True, timeout)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "crime_index_dask.py", line 154, in <module>
+    run()
+  File "crime_index_dask.py", line 134, in run
+    results = client.gather(futures)
+  File "/home/sakaban/anaconda3/envs/dasksa/lib/python3.7/site-packages/distributed/client.py", line 2152, in gather
+    asynchronous=asynchronous,
+  File "/home/sakaban/anaconda3/envs/dasksa/lib/python3.7/site-packages/distributed/utils.py", line 310, in sync
+    self.loop, func, *args, callback_timeout=callback_timeout, **kwargs
+  File "/home/sakaban/anaconda3/envs/dasksa/lib/python3.7/site-packages/distributed/utils.py", line 372, in sync
+    wait(10)
+  File "/home/sakaban/anaconda3/envs/dasksa/lib/python3.7/site-packages/distributed/utils.py", line 361, in wait
+    return e.wait(timeout)
+  File "/home/sakaban/anaconda3/envs/dasksa/lib/python3.7/threading.py", line 552, in wait
+    signaled = self._cond.wait(timeout)
+  File "/home/sakaban/anaconda3/envs/dasksa/lib/python3.7/threading.py", line 300, in wait
+    gotit = waiter.acquire(True, timeout)
+KeyboardInterrupt
