@@ -5,8 +5,7 @@ import numpy as np
 import time
 import argparse
 
-import sys
-from dask.distributed import Client, get_worker
+from dask.distributed import Client
 
 import composer_pandas as pd
 
@@ -72,12 +71,7 @@ def run():
     print("Log Level", loglevel)
     print("Mode:", mode)
 
-    sys.stdout.write("Generating data...")
-    sys.stdout.flush()
-    inputs = gen_data(size)
-    print("done.")
-
-    client = Client(address='tcp://192.168.1.102:8786')
+    client = Client(address='tcp://<scheduler-address>')
     print(client)
     client.restart()
     
@@ -89,13 +83,11 @@ def run():
 
     start = time.time()
     if mode == "composer":
-        # result = datacleaning_composer(size, threads)
         results = []
         for i in range(0, dask_size, 2):
             futures = client.map(datacleaning_composer, size_list[i:i+1], threads_list[i:i+1])
             results += client.gather(futures)
     elif mode == "naive":
-        # result = datacleaning_pandas(size)
         results = []
         for i in range(0, dask_size, 2):
             futures = client.map(datacleaning_pandas, size_list[i:i+1])
@@ -112,9 +104,7 @@ def run():
     print(f"Average Data Gen:     {np.mean(data_gen_time_list)}")
     print(f"Average Compute Time: {np.mean(compute_time_list)}")
     print(f"Total time:           {end - start}")
-    client.restart()
     client.close()
-    time.sleep(5)
     
 
 if __name__ == "__main__":

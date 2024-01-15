@@ -3,20 +3,13 @@
 import argparse
 import sys
 
-# sys.path.append("../../lib")
-# sys.path.append("../../pycomposer")
-
 import numpy as np
 import time
 from dask.distributed import Client, get_worker
 
 import composer_pandas as pd
-import dask
 
 def gen_data(total_population1, adult_population1, num_robberies1, size):
-    # total_population = np.ones(size, dtype="float64") * 500000
-    # adult_population = np.ones(size, dtype="float64") * 250000
-    # num_robberies = np.ones(size, dtype="float64") * 1000
     total_population = np.ones(size, dtype="float64") * total_population1
     adult_population = np.ones(size, dtype="float64") * adult_population1
     num_robberies = np.ones(size, dtype="float64") * num_robberies1
@@ -99,46 +92,26 @@ def run():
 
     sys.stdout.write("Generating data...")
     sys.stdout.flush()
-    # total_population, adult_population, num_robberies = gen_data(size, 0)
     print("done.")
 
-    # total_population_list = [total_population] * dask_size
-    # adult_population_list = [adult_population] * dask_size
-    # num_robberies_list = [num_robberies] * dask_size
-    # threads_list = [threads] * dask_size
     total_population_list = np.random.randint(0, 500001, size=dask_size)
     adult_population_list = np.random.randint(0, 500001, size=dask_size)
     num_robberies_list = np.random.randint(0, 2000, size=dask_size)
     threads_list = [threads] * dask_size
     size_list = [size] * dask_size
 
-    client = Client(address='tcp://192.168.1.102:8786')
+    client = Client(address='tcp://<scheduler-address>')
     print(client)
-    # client.restart()
-    
 
     start = time.time()
     if mode == "composer":
-        # result = crime_index_composer(inputs[0], inputs[1], inputs[2], threads)
-        # futures = client.map(crime_index_composer, total_population_list, adult_population_list, num_robberies_list, size_list, threads_list)
-        # results = client.gather(futures)
-        
         results = []
-        # for i in range(dask_size):
-        #     future = client.submit(crime_index_composer, total_population_list[i], adult_population_list[i], num_robberies_list[i], size_list[i], threads_list[i])
-        #     results.append(future.result())
         for i in range(0, dask_size, 2):
             future = client.map(crime_index_composer, total_population_list[i:i+1], adult_population_list[i:i+1], num_robberies_list[i:i+1], size_list[i:i+1], threads_list[i:i+1])
             results += (client.gather(future))
         
     elif mode == "naive":
-        # result = crime_index_pandas(*inputs)
-        # futures = client.map(crime_index_pandas, total_population_list, adult_population_list, num_robberies_list, size_list, threads_list)
-        # results = client.gather(futures)
         results = []
-        # for i in range(dask_size):
-        #     future = client.submit(crime_index_pandas, total_population_list[i], adult_population_list[i], num_robberies_list[i], size_list[i], threads_list[i])
-        #     results.append(future.result())
         for i in range(0, dask_size, 2):
             future = client.map(crime_index_pandas, total_population_list[i:i+1], adult_population_list[i:i+1], num_robberies_list[i:i+1], size_list[i:i+1], threads_list[i:i+1])
             results += (client.gather(future))
@@ -155,9 +128,6 @@ def run():
     print(f"Total Time: {end - start}")
     print(f"Worker Average Time: {np.mean(sa_time_list)}")
     print(f"worker joined: {worker_address_list}")
-    # print(results)
-    # print(end - start, "seconds")
-    # print(results)
     client.close()
 
 if __name__ == "__main__":

@@ -1,14 +1,3 @@
-"""
-ENV: sa36 on sakaban
-
-For scheduler, run: 
-dask-scheduler
-
-For worker, run: 
-dask-worker tcp://192.168.1.102:8786 --no-nanny --worker-port 21000
-dask-worker tcp://192.168.1.102:8786 --no-nanny --worker-port 20000
-"""
-
 from dask.distributed import Client, get_worker
 from dask_jobqueue import SLURMCluster, PBSCluster
 import time
@@ -25,10 +14,6 @@ def fill_diagonal(a, val):
 
         
 def random_galaxy(N, composer, threads):
-    sys.path.append("/home/robye/workspace/sa/split-annotations/python/lib")
-    sys.path.append("/home/robye/workspace/sa/split-annotations/python/pycomposer")
-    sys.path.append("/home/sakaban/split-annotations/python/lib")
-    sys.path.append("/home/sakaban/split-annotations/python/pycomposer")
     if composer:
         import composer_numpy as np
         addreduce = np.addreduce
@@ -237,22 +222,6 @@ def simulate(m, x, y, z, vx, vy, vz, timesteps):
     simulation_time = end - start
     return (simulation_time, step_0, step_05, step_1, step_2, step_3, step_4)
         
-
-def add1(x, composer, threads):
-    sys.path.append("/home/robye/workspace/sa/split-annotations/python/lib")
-    sys.path.append("/home/robye/workspace/sa/split-annotations/python/pycomposer")
-    sys.path.append("/home/sakaban/split-annotations/python/lib")
-    sys.path.append("/home/sakaban/split-annotations/python/pycomposer")
-    if composer:
-        import composer_numpy as np
-    else:
-        import numpy as np
-    np.add(x, 1, out=x)
-    if composer:
-        np.evaluate(workers=threads)
-        
-    return x
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         description="N-Body benchmark."
@@ -288,14 +257,10 @@ if __name__ == "__main__":
     else:
         raise ValueError("invalid mode", mode)
     
-    client = Client(address='tcp://192.168.1.102:8786')
+    client = Client(address='tcp://<scheduler-address>')
     print(client)
     client.restart()
-    
-    sys.path.append("/home/robye/workspace/sa/split-annotations/python/lib")
-    sys.path.append("/home/robye/workspace/sa/split-annotations/python/pycomposer")
-    sys.path.append("/home/sakaban/split-annotations/python/lib")
-    sys.path.append("/home/sakaban/split-annotations/python/pycomposer")    
+
     if composer:
         import composer_numpy as np
         addreduce = np.addreduce
@@ -321,13 +286,6 @@ if __name__ == "__main__":
     size_list = [size] * dask_size
     composer_list = [composer] * dask_size
     threads_list = [threads] * dask_size
-    
-    # future = client.submit(random_galaxy, size, composer,threads)
-    # results = future.result()
-    # m, x, y, z, vx, vy, vz = results 
-    
-    # future = client.map(random_galaxy, size_list, composer_list,threads_list, workers='w2')
-    # results = client.gather(future)
     
     results = []
     for i in range(0, dask_size, 2):
@@ -364,9 +322,6 @@ if __name__ == "__main__":
     
     iterations_list = [iterations] * len(x)
     
-    # future = client.map(simulate, m_list, x_list, y_list, z_list, vx_list, vy_list, vz_list, iterations_list, workers='w2')
-    # results = client.gather(future)
-    
     results = []
     for i in range(0, len(x), 2):
         future = client.map(simulate, m_list[i:i+1], x_list[i:i+1], y_list[i:i+1], z_list[i:i+1], vx_list[i:i+1], vy_list[i:i+1], vz_list[i:i+1], iterations_list[i:i+1])
@@ -393,14 +348,6 @@ if __name__ == "__main__":
         step_3_list.append(step_3)
         step_4_list.append(step_4)
     
-
-
-    # print(f"Simulation time: {simulation_time}")
-    # print(f"step 0:          {step_0}")
-    # print(f"step 0.5:        {step_05}")
-    # print(f"step 1:          {step_1}")
-    # print(f"step 2:          {step_2}")
-    # print(f"step 3:          {step_3}")
     import statistics
     print(f"Simulation time: {statistics.mean(simulation_time_list)}")
     print(f"step 0:          {statistics.mean(step_0_list)}")
@@ -411,5 +358,3 @@ if __name__ == "__main__":
     print(f"Total time:      {exe_time}")
 
     client.close()
-    
-    time.sleep(5)

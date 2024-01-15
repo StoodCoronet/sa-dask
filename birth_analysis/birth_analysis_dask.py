@@ -1,25 +1,11 @@
 import sys
 
-"""
-import os
-env_vars = os.environ
-sa_home = env_vars['SA_HOME']
-"""
-sys.path.append("/home/robye/workspace/sa/split-annotations/python/lib")
-sys.path.append("/home/robye/workspace/sa/split-annotations/python/pycomposer")
-sys.path.append("/home/sakaban/split-annotations/python/lib")
-sys.path.append("/home/sakaban/split-annotations/python/pycomposer")
-
 from dask.distributed import Client, get_worker
 import argparse
 import composer_pandas as pd
 import time
 
 def analyze(top1000):
-    sys.path.append("/home/robye/workspace/sa/split-annotations/python/lib")
-    sys.path.append("/home/robye/workspace/sa/split-annotations/python/pycomposer")
-    sys.path.append("/home/sakaban/split-annotations/python/lib")
-    sys.path.append("/home/sakaban/split-annotations/python/pycomposer")
     import composer_numpy as np
     import composer_pandas as pd
     start1 = time.time()
@@ -39,10 +25,6 @@ def get_top1000(group):
     return group.sort_values(by='births', ascending=False)[0:1000]
 
 def run(filename, threads, composer):
-    sys.path.append("/home/robye/workspace/sa/split-annotations/python/lib")
-    sys.path.append("/home/robye/workspace/sa/split-annotations/python/pycomposer")
-    sys.path.append("/home/sakaban/split-annotations/python/lib")
-    sys.path.append("/home/sakaban/split-annotations/python/pycomposer")
     import composer_numpy as np
     import composer_pandas as pd
         
@@ -128,10 +110,6 @@ def main():
     else:
         raise ValueError("unknown mode", mode)
     
-    sys.path.append("/home/robye/workspace/sa/split-annotations/python/lib")
-    sys.path.append("/home/robye/workspace/sa/split-annotations/python/pycomposer")
-    sys.path.append("/home/sakaban/split-annotations/python/lib")
-    sys.path.append("/home/sakaban/split-annotations/python/pycomposer")
     if composer:
         import composer_numpy as np
         import composer_pandas as pd
@@ -139,7 +117,7 @@ def main():
         import numpy as np
         import pandas as pd
     
-    client = Client('tcp://192.168.1.102:8786')
+    client = Client('tcp://<scheduler-address>')
     print(client)
 
     start = time.time()
@@ -164,8 +142,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    
-"""
-python birth_analysis_dask.py -f /mnt/nfs/birth_analysis/_data/babynames.txt -t 4 -m composer
-python birth_analysis_dask.py -f /mnt/nfs/birth_analysis/_data/babynames-xlarge.txt -t 4 -m composer
-"""    

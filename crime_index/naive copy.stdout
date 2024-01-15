@@ -1,9 +1,0 @@
-Size: 67108864
-Piece Size: 32768
-Threads: 1
-Mode: naive
-Generating data...done.
-<Client: 'tcp://192.168.1.102:8786' processes=2 threads=26, memory=62.24 GiB>
-Total Time: 11.17922329902649
-Worker Average Time: 1.071798712015152
-worker joined: ['tcp://192.168.1.102:21000', 'tcp://192.168.1.104:20000', 'tcp://192.168.1.102:21000', 'tcp://192.168.1.104:20000', 'tcp://192.168.1.102:21000', 'tcp://192.168.1.104:20000', 'tcp://192.168.1.102:21000', 'tcp://192.168.1.104:20000']
